@@ -1,6 +1,6 @@
 """
-author: 
-date: 
+author: Dmytrylo
+date: 2026/02/20
 0.4 - Functions Review Exercises
 """
 import math
@@ -13,18 +13,19 @@ def sum_cubes(n):
     Arg: n (int) - The number of cubes to sum
     
     Returns: none
-
     """
-    # TODO: Write your code here
-
-
+    total = 0
+    for num in range(1, n + 1):
+        total = total + num ** 3
+    print(total)
 
 # Test cases for sum_cubes
-sum_cubes(0)    # Expected: 0
-sum_cubes(1)    # Expected: 1
-sum_cubes(5)    # Expected: 225
-sum_cubes(10)   # Expected: 3025
-sum_cubes(50)   # Expected: 1625625
+sum_cubes(0)    
+sum_cubes(1)    
+sum_cubes(5)    
+sum_cubes(10)   
+sum_cubes(50)   
+
 
 # Exercise 2: 
 def volume_sphere(r):
@@ -34,10 +35,9 @@ def volume_sphere(r):
     Arg: r (float) - Radius of the sphere.
 
     Returns (float): Volume of the sphere.
-    
     """
-    # TODO: Write your code here
-
+    vol = (3/4) * math.pi * (r ** 3)
+    return vol
 
 
 def area_sphere(r):
@@ -49,60 +49,53 @@ def area_sphere(r):
     Returns:
     float: Surface area of the sphere.
     """
-    # TODO: Write your code here
+    surf = 4 * math.pi * (r ** 2)
+    return surf
+
 
 # Test Cases for volume_sphere and area_sphere
 radii = [0, 1, 4, 10.4, 100.344]
 for r in radii:
-    vol = volume_sphere(r)
-    area = area_sphere(r)
-    print("Radius:", r, "-> Volume:", round(vol, 2), "Area:", round(area, 2))
+    v = volume_sphere(r)
+    a = area_sphere(r)
+    print("Radius:", r, "-> Volume:", round(v, 2), "Area:", round(a, 2))
 
-# Expected Results:
-# Radius: 0 -> Volume: 0.00, Area: 0.00
-# Radius: 1 -> Volume: 4.19, Area: 12.57
-# Radius: 4 -> Volume: 268.08, Area: 201.06
-# Radius: 10.4 -> Volume: 4711.82, Area: 1359.18
-# Radius: 100.344 -> Volume: 4232167.40, Area: 126529.76
 
-# Exercise 3: This concept is used frequently when sorting values.
+# Exercise 3
 def swap(a, b):
     """
     Swaps two input values and returns them in reversed order.
-
-    Parameters:
-    a: First value.
-    b: Second value.
-
-    Returns:
-    tuple: A tuple containing the values in reversed order (b, a).
     """
-
+    temp1 = b
+    temp2 = a
+    return temp1, temp2
 
 # Test cases for swap
 x, y = swap(3, 5)
-print(x, y)  # Expected: 5 3
+print(x, y)
 
 x, y = swap("Boo", "Hoo")
-print(x, y)  # Expected: Hoo Boo
+print(x, y)
 
 
 # Exercise 4: Challenge
 def approximate_pi(n):
     """
-        Approximates the value of pi using the Leibniz series:
-        pi ≈ 4/1 - 4/3 + 4/5 - 4/7 + ...
+    Approximates the value of pi using the Leibniz series.
+    """
+    result = 0
+    sign = 1
 
-        Arg: n (int) - Number of terms to include in the approximation.
+    for i in range(n):
+        denom = 2 * i + 1
+        result = result + sign * (4 / denom)
+        sign = sign * -1
 
-        Returns (float): Approximated value of pi.
-        """
+    return result
 
 
 # Test cases for approximate_pi
-print(approximate_pi(3))     # Expected: 3.466666666666667
-print(approximate_pi(10))    # Expected: 3.0418396189294032
-print(approximate_pi(100))   # Expected: 3.1315929035585537
-print(approximate_pi(1000))  # Expected: 3.140592653839794
-
-# Do you notice anything interesting with the outputs?
+print(approximate_pi(3))
+print(approximate_pi(10))
+print(approximate_pi(100))
+print(approximate_pi(1000))
